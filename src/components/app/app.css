@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.body{
+    width: 1920px;
+    height: 1080px;
+}
+
+.headline {
+    display: flex;
+    align-items: center;
+}

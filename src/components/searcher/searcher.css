@@ -1,0 +1,30 @@
+.search-form {
+    align-items: center;
+    display: inline-flex;
+}
+
+
+.search-input {
+    width: 600px;
+    height: 80px;
+    padding-inline-end: 60px;
+    top: 100px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 56px;
+
+    
+}
+
+
+
+
+
+
