@@ -4,32 +4,24 @@ import "./countries-table.css";
 
 const CountriesTable = ({filtered, setFiltered, openModal, setModalData}) => {
 
-    const [order, setOrder] = useState("up");
+    const [order, setOrder] = useState("ascending");
 
     const sortColumn = (col) => {
-        if (order === "up") {
-            const sorted = [...filtered].sort((a, b) =>
-                a[col] < b[col] ? 1 : -1
-            );
-            setFiltered(sorted);
-            setOrder("down");
-        }
-        if (order === "down") {
-            const sorted = [...filtered].sort((a, b) =>
-                a[col] > b[col] ? 1 : -1
-            );
-            setFiltered(sorted);
-            setOrder("up");
-        }
+        const orderMultiplier = order === "ascending" ? 1 : -1;
+        const sorted = [...filtered].sort((a, b) =>
+            (a[col] < b[col] ? 1 : -1) * orderMultiplier
+        );
+        setFiltered(sorted);
+        setOrder(order === "ascending" ? "descending" : "ascending");
     };
 
     const CountriesList = filtered.map((countriesListItem, index) => {
-        let { id, Country, TotalConfirmed, TotalDeaths, TotalRecovered} = countriesListItem;
+        const { id, countryName, totalConfirmed, totalDeaths, totalRecovered} = countriesListItem;
         return (
-            <tr key={id} onClick={() => setModalData({Country, TotalConfirmed, TotalDeaths, TotalRecovered}, openModal(true))}>
+            <tr key={id} onClick={() => setModalData({countryName, totalConfirmed, totalDeaths, totalRecovered}, openModal(true))}>
                 <td>{index+1}</td>
-                <td>{Country}</td>
-                <td>{TotalConfirmed}</td>
+                <td>{countryName}</td>
+                <td>{totalConfirmed}</td>
             </tr>
         );
     });
@@ -40,8 +32,8 @@ const CountriesTable = ({filtered, setFiltered, openModal, setModalData}) => {
                 <thead>
                     <tr>
                         <th id="item-number">№</th>
-                        <th id="item-Country" onClick={() => sortColumn("Country")}>Country</th>
-                        <th id="item-TotalConfirmed" onClick={() => sortColumn("TotalConfirmed")}>Total Confirmed</th>
+                        <th id="item-Country" onClick={() => sortColumn("countryName")}>Country</th>
+                        <th id="item-TotalConfirmed" onClick={() => sortColumn("totalConfirmed")}>Total Confirmed</th>
                     </tr>
                 </thead>
                 

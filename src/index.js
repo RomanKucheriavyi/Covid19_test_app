@@ -5,5 +5,5 @@ import App from './components/app';
 render(
     <StrictMode>
         <App />
-    </StrictMode>, 
-    document.getElementById('root'));
+    </StrictMode>, document.getElementById('root')
+    );
